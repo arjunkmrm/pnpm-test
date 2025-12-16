@@ -3,7 +3,7 @@ import { z } from "zod"
 
 // Optional: If you have user-level config, define it here
 export const configSchema = z.object({
-	debug: z.boolean().default(false).describe("Enable debug logging"),
+	apiKey: z.literal("test").describe("API key (must be 'test')"),
 })
 
 export default function createServer({
@@ -28,7 +28,7 @@ export default function createServer({
 			content: [
 				{ 
 					type: "text", 
-					text: config.debug ? `DEBUG: Hello ${name}` : `Hello, ${name}!` // use provided config
+					text: `Hello, ${name}!`
 				}
 			],
 		}),
